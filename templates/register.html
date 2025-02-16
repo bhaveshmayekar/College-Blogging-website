@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Register Page</title>
+{% endblock title %}
+
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<h2 class="text-center my-3">Registration Form</h2>
+<div class="container">
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstname" name="firstname">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="pass">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="repass">Retype Password</label>
+                <input type="password" class="form-control" id="repass" name="repass">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 80px; height: 70px;">Sign in</button>
+    </form>
+</div>
+{% endblock body %}
